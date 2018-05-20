@@ -1,5 +1,5 @@
 {
-  const images = new Array(8).fill().map((_, i) => `./lit${i}.svg`);
+  const images = new Array(8).fill().map((_, i) => `./public/lit${i}.svg`);
 
   console.log(images);
 
