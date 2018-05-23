@@ -18,3 +18,28 @@
     }, 100);
   });
 }
+
+{
+  const svg = SVG.get('img');
+  const polygons = svg.select('polygon');
+
+  const initialColors = [];
+  polygons.each(function() {
+    initialColors.push(new SVG.Color(this.attr('fill')).toHex());
+  });
+
+  const getRandom = (min, max) => Math.random() * (max - min) + min;
+
+  const recolor = () =>
+    polygons.each(function(i) {
+      const modifiedColor = chroma(initialColors[i])
+        .darken(getRandom(0, 0.3))
+        .brighten(getRandom(0, 0.3))
+        .hex();
+
+      this.attr('fill', modifiedColor);
+    });
+
+  // recolor();
+  setInterval(recolor, 100);
+}
